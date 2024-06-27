@@ -66,14 +66,6 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <button class="button" onclick="showMessage()">Clique aqui</button>
-        <div class="message" id="message"></div>
-        <div class="image-container" id="imageContainer">
-            <img id="aniversarioImg" src="carioca.jpeg" alt="Imagem de Aniversário">
-        </div>
-    </div>
-
     <script>
         function showMessage() {
             const messageElement = document.getElementById('message');
@@ -89,9 +81,6 @@ amo vc s2';
             
             // Esconde o botão após ser clicado
             button.style.display = 'none';
-            
-            // Mostra a imagem de aniversário
-            imageContainer.style.display = 'block';
         }
 
         function createShapes(shapeClass, numberOfShapes) {
