@@ -12,13 +12,10 @@
             height: 100vh;
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
             margin: 0;
         }
         .container {
             text-align: center;
-            z-index: 1;
         }
         .button {
             padding: 10px 20px;
@@ -38,44 +35,20 @@
             color: #333;
             font-weight: bold; /* Texto em negrito */
         }
-        .image-container {
-            margin-top: 40px; /* Distância maior entre a mensagem e a imagem */
-        }
-        .image-container img {
-            max-width: 80%; /* Imagem menor */
-            border-radius: 5px;
-        }
-        .star, .heart {
-            width: 10px;
-            height: 10px;
-            position: absolute;
-            animation: twinkle 2s infinite ease-in-out;
-        }
-        .star {
-            background-color: yellow;
-            border-radius: 50%;
-        }
-        .heart {
-            background-color: red;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <button class="button" onclick="showMessage()">Clique aqui</button>
+        <div class="message" id="message"></div>
+    </div>
+
     <script>
         function showMessage() {
             const messageElement = document.getElementById('message');
             const button = document.querySelector('.button');
-            const imageContainer = document.getElementById('imageContainer');
             
-            messageElement.textContent = 'Passando pra te desejar um Feliz Aniversário!
-Feliz de te conhecer e de ter feito parte da sua vida, é ótimo ver voce todo felizinho vivendo seu "verão europeu".
-Espero que seu dia seja incrível e que aproveite bastante!
-amo vc s2';
+            messageElement.textContent = 'Passando pra te desejar um Feliz Aniversário!';
             createShapes('star', 50);
             createShapes('heart', 50);
             
@@ -92,12 +65,6 @@ amo vc s2';
                 document.body.appendChild(shape);
             }
         }
-
-        // Função para remover a imagem ao carregar a página
-        window.onload = function() {
-            const imageContainer = document.getElementById('imageContainer');
-            imageContainer.parentNode.removeChild(imageContainer);
-        };
     </script>
 </body>
 </html>
