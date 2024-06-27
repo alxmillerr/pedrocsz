@@ -61,7 +61,7 @@
 </head>
 <body>
     <div class="container">
-        <button class="button" onclick="showFirstMessage()">Clique aqui</button>
+        <button class="button" id="firstButton" onclick="showFirstMessage()">Clique aqui</button>
         <div class="message" id="message"></div>
         <button class="button" id="secondButton" style="display:none;" onclick="showSecondMessage()">Clique aqui</button>
     </div>
@@ -69,7 +69,7 @@
     <script>
         function showFirstMessage() {
             const messageElement = document.getElementById('message');
-            const firstButton = document.querySelector('.button');
+            const firstButton = document.getElementById('firstButton');
             const secondButton = document.getElementById('secondButton');
             
             messageElement.textContent = 'Passando pra te desejar um Feliz Aniversário!';
@@ -86,7 +86,7 @@
         function showSecondMessage() {
             const messageElement = document.getElementById('message');
             
-            messageElement.textContent = 'Feliz de te conhecer e de ter feito parte da sua vida, é ótimo ver voce todo felizinho vivendo seu "verão europeu". Espero que seu dia seja incrível e que aproveite bastante! amo vc s2'';
+            messageElement.textContent = 'Feliz de te conhecer e de ter feito parte da sua vida, é ótimo ver voce todo felizinho vivendo seu "verão europeu". Espero que seu dia seja incrível e que aproveite bastante! amo vc s2';
             createShapes('star', 50);
             createShapes('heart', 50);
             
