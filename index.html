@@ -13,9 +13,12 @@
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             margin: 0;
+            overflow: hidden;
+            position: relative;
         }
         .container {
             text-align: center;
+            z-index: 1;
         }
         .button {
             padding: 10px 20px;
@@ -25,6 +28,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
         }
         .button:hover {
             background-color: #333;
@@ -35,25 +39,60 @@
             color: #333;
             font-weight: bold; /* Texto em negrito */
         }
+        .star, .heart {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+        .star {
+            background-color: yellow;
+            border-radius: 50%;
+        }
+        .heart {
+            background-color: red;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="button" onclick="showMessage()">Clique aqui</button>
+        <button class="button" onclick="showFirstMessage()">Clique aqui</button>
         <div class="message" id="message"></div>
+        <button class="button" id="secondButton" style="display:none;" onclick="showSecondMessage()">Clique aqui</button>
     </div>
 
     <script>
-        function showMessage() {
+        function showFirstMessage() {
             const messageElement = document.getElementById('message');
-            const button = document.querySelector('.button');
+            const firstButton = document.querySelector('.button');
+            const secondButton = document.getElementById('secondButton');
             
             messageElement.textContent = 'Passando pra te desejar um Feliz Aniversário!';
             createShapes('star', 50);
             createShapes('heart', 50);
             
-            // Esconde o botão após ser clicado
-            button.style.display = 'none';
+            // Esconde o primeiro botão após ser clicado
+            firstButton.style.display = 'none';
+            
+            // Mostra o segundo botão
+            secondButton.style.display = 'inline-block';
+        }
+
+        function showSecondMessage() {
+            const messageElement = document.getElementById('message');
+            
+            messageElement.textContent = 'Feliz de te conhecer e de ter feito parte da sua vida, é ótimo ver voce todo felizinho vivendo seu "verão europeu". Espero que seu dia seja incrível e que aproveite bastante! amo vc s2'';
+            createShapes('star', 50);
+            createShapes('heart', 50);
+            
+            // Esconde o segundo botão após ser clicado
+            const secondButton = document.getElementById('secondButton');
+            secondButton.style.display = 'none';
         }
 
         function createShapes(shapeClass, numberOfShapes) {
