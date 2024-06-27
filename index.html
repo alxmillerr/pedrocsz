@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem de Aniversário</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold; /* Texto em negrito */
+        }
+        .image-container {
+            margin-top: 40px; /* Distância maior entre a mensagem e a imagem */
+        }
+        .image-container img {
+            max-width: 80%; /* Imagem menor */
+            border-radius: 5px;
+        }
+        .star, .heart {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+        .star {
+            background-color: yellow;
+            border-radius: 50%;
+        }
+        .heart {
+            background-color: red;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button" onclick="showMessage()">Clique aqui</button>
+        <div class="message" id="message"></div>
+        <div class="image-container" id="imageContainer" style="display: none;">
+            <img id="aniversarioImg" src="carioca.jpeg" alt="Imagem de Aniversário">
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            const messageElement = document.getElementById('message');
+            const button = document.querySelector('.button');
+            const imageContainer = document.getElementById('imageContainer');
+            
+            messageElement.textContent = 'Passando pra te desejar um Feliz Aniversário! Feliz de te conhecer e de ter feito parte da sua vida, é ótimo ver voce todo felizinho vivendo seu "verão europeu". Espero que seu dia seja incrível e que aproveite bastante! amo vc s2';
+            createShapes('star', 50);
+            createShapes('heart', 50);
+            
+            // Esconde o botão após ser clicado
+            button.style.display = 'none';
+            
+            // Mostra a imagem de aniversário
+            imageContainer.style.display = 'block';
+        }
+
+        function createShapes(shapeClass, numberOfShapes) {
+            for (let i = 0; i < numberOfShapes; i++) {
+                const shape = document.createElement('div');
+                shape.classList.add(shapeClass);
+                shape.style.top = `${Math.random() * 100}vh`;
+                shape.style.left = `${Math.random() * 100}vw`;
+                document.body.appendChild(shape);
+            }
+        }
+
+        // Função para remover a imagem ao carregar a página
+        window.onload = function() {
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.parentNode.removeChild(imageContainer);
+        };
+    </script>
+</body>
+</html>
