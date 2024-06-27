@@ -40,6 +40,7 @@
         }
         .image-container {
             margin-top: 40px; /* Distância maior entre a mensagem e a imagem */
+            display: none; /* Inicialmente escondido */
         }
         .image-container img {
             max-width: 80%; /* Imagem menor */
@@ -69,7 +70,7 @@
     <div class="container">
         <button class="button" onclick="showMessage()">Clique aqui</button>
         <div class="message" id="message"></div>
-        <div class="image-container" id="imageContainer" style="display: none;">
+        <div class="image-container" id="imageContainer">
             <img id="aniversarioImg" src="carioca.jpeg" alt="Imagem de Aniversário">
         </div>
     </div>
